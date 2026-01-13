@@ -20,8 +20,13 @@ public class SmartBazaarAutomation {
             Thread.sleep(1000);
 
             Actions ac = new Actions(driver);
-            WebElement drop = driver.findElement();
+            WebElement drop = driver.findElement(By.xpath("//a[@class='account-icon dropdown-toggle']"));
             ac.moveToElement(drop);
+            drop.click();
+            int height=drop.getSize().getHeight();  //heightoftheelement
+            ac.moveByOffset(0,height+5).click().perform();   //justbelowtheelement
+            //WebElement s= driver.findElement(By.linkText("Login / Register"));
+            //System.out.println(s.getText());
 
         }
 }

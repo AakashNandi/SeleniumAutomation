@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Google {
     public static void main(String[] args) throws Exception{
         WebDriver driver = new ChromeDriver();
-        driver .get("https://www.google.com");
+        driver.get("https://www.google.com");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         WebElement ele = driver.findElement(By.xpath("//textarea[@name='q']"));
         Objects.requireNonNull(wait.until(ExpectedConditions.visibilityOf(ele))).sendKeys("frescoapps", Keys.ENTER);;

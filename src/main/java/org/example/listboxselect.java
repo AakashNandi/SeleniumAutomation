@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,12 +30,18 @@ public class listboxselect {
 
         String type = "Current"; // matches the id
         List<WebElement> radios = driver.findElements(By.xpath("//input[@type='radio']"));
+
+        HashSet<String> allText=new HashSet<String>(); //if duplicate element contains take only unique
+
+
         JavascriptExecutor scroll = (JavascriptExecutor) driver;
         scroll.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",pp);
         for (WebElement r : radios) {
             if (Objects.requireNonNull(r.getAttribute("id")).equalsIgnoreCase(type)) {
                 System.out.println("ExceutedFinally");
                 r.click();
+                allText.add(type);  //need to iterate through loops... and add the string iterated values...
+                                    //here webelement so taking type, just showing the process......
                 Thread.sleep(5000);
                 System.out.println("ExceutedFinally");
                 break;
@@ -43,6 +50,10 @@ public class listboxselect {
 
 
         select.selectByVisibleText("India (+91)");
+
+        for(Object o: allText){   //To print the HashSet
+            System.out.println(o);
+        }
 
         // Select radio button by value
 
